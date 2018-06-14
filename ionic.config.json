@@ -1,0 +1,8 @@
+{
+  "name": "myscanagent",
+  "app_id": "5f56187d",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
