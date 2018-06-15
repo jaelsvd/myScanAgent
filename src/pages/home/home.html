@@ -1,17 +1,46 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title text-center>Search by UPC</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content padding class="new-items">
+    <ion-searchbar
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+  <hr>
+  <ion-row >
+      <ion-col col-3 text-center>
+        <strong>Condition</strong>
+      </ion-col>
+      <ion-col col-3 text-center>
+        <strong>Price</strong>
+      </ion-col>
+      <ion-col col-3 text-center>
+        <strong>Shipping</strong>
+      </ion-col>
+      <ion-col col-3 text-center>
+        <strong>Fullfilment</strong>
+      </ion-col>
+  </ion-row>
+  <ion-row >
+    <ion-col col-3 text-center>
+        <ion-icon name="checkmark-circle-outline"></ion-icon> New
+    </ion-col>
+    <ion-col col-3 text-center>
+         $12.99
+    </ion-col>
+    <ion-col col-3 text-center>
+         $0
+    </ion-col>
+    <ion-col col-3 text-center>
+        Amazon
+    </ion-col>
+    <ion-col>
+
+    </ion-col>
+  </ion-row>
 </ion-content>
