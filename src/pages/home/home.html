@@ -6,11 +6,11 @@
 
 <ion-content padding class="new-items">
     <ion-searchbar
-    [(ngModel)]="myInput"
-    [showCancelButton]="shouldShowCancel"
-    (ionInput)="onInput($event)"
-    (ionCancel)="onCancel($event)">
+    [(ngModel)]="myInput" (input)='searchByKeyword($event.target.value)'>
   </ion-searchbar>
+  <hr>
+  <hr>
+  <h1 text-center *ngIf="details">{{details.Details.Title}}</h1>
   <hr>
   <ion-row >
       <ion-col col-3 text-center>
@@ -26,21 +26,41 @@
         <strong>Fullfilment</strong>
       </ion-col>
   </ion-row>
-  <ion-row >
-    <ion-col col-3 text-center>
-        <ion-icon name="checkmark-circle-outline"></ion-icon> New
-    </ion-col>
-    <ion-col col-3 text-center>
-         $12.99
-    </ion-col>
-    <ion-col col-3 text-center>
-         $0
-    </ion-col>
-    <ion-col col-3 text-center>
-        Amazon
-    </ion-col>
-    <ion-col>
+  <div *ngIf="details" >
 
+  
+  <ion-row  *ngFor="let item of details.LowestOffers">
+    <ion-col col-3 text-center >
+        <ion-label > {{item.Condition}} </ion-label>
+    </ion-col>
+    <ion-col col-3 text-center >
+        <ion-label > {{item.ListingPrice}} </ion-label>
+    </ion-col>
+    <ion-col col-3 text-center >
+        <ion-label > {{item.ShippingPrice}} </ion-label>
+    </ion-col>
+    <ion-col col-3 text-center >
+        <ion-label > {{item.FullfilmentChannel}} </ion-label>
     </ion-col>
   </ion-row>
+</div>
+  <ion-row *ngIf="details">
+      <hr>
+    <ion-col>
+      
+      <img *ngIf="details" src="{{details.Details.ImageURL}}">
+    </ion-col>
+    <ion-col>
+      
+    </ion-col>
+  </ion-row>
+  <ion-list>
+    <ion-item *ngFor="let user of users">
+      <ion-avatar item-start>
+        <img [src]="user.picture.medium">
+      </ion-avatar>
+      <h2>{{ user.name.first | uppercase }}</h2>
+      <p>{{ user.email }}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>

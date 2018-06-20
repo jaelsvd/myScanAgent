@@ -10,17 +10,15 @@
   <ion-row top-padding>
     <ion-col>
       <img src="assets/imgs/ScanAgentLogo.png">
-      <form id="login-form1" class="list">
+      <form #f="ngForm" (ngSubmit)="login(f)">
           <ion-item>
-              <ion-input type="email" placeholder="Email Input"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-input type="email" placeholder="Password"></ion-input>
-              </ion-item>
-        <button ion-button full (click)="goHome()">Login</button>
-        <div class="spacer" style="height: 40px;"></div>
-        <a class="button button-stable button-block">Log in</a>
-        <a class="button button-positive button-block button-clear">Or create an account</a>
+              <ion-input  ngModel name="email" #email="ngModel" type="email" placeholder="Email Input"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-input ngModel name="password" #password="ngModel" type="password" placeholder="Password"></ion-input>
+          </ion-item>
+        <button type="submit" ion-button full>Login</button>
+        <button ion-button full color="red" (click)="goHome()">Login</button>
       </form>
     </ion-col>
   </ion-row>
